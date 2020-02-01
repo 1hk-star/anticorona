@@ -1,5 +1,31 @@
 var fs = require('fs');
 var template = {
+	 contact:function(){
+                var contents = `
+                 <!--==========================
+                      Services Section
+                    ============================-->
+                    <section id="services" class="section-bg status">
+                      </br></br>
+                      <div id= "status" class="container pt-5">
+                        <header class="section-header">
+                          <h4>문의하기</h2>
+                        </header>
+                        <p>사이트를 이용하면서 생긴 버그, 개선점 등을 알려주시면 저희가 검토 후 빠르게 반영하도록 노력하겠습니다.<br/> 그외 어떠한  피드백이라도 좋습니다. 피드백을 남겨주신다면  저희가 확인 후 답장해 드리도록 하겠습니다.</p>
+
+                        </div>
+			<div id= "status" class="container pt-5">
+                        <header class="section-header">
+                          <h4>후원하기</h2>
+                        </header>
+                        <p>저희는 대학생으로 이루어진 팀으로써 이번 신종코로나바이러스에대해 조금이라도 다른분들께 도움이 되고자 사이트를 제작하고 있습니다.<br/>  서버, 도메인 등의 유지비용을 모두 사비로 충당하고 있으며 좋은뜻으로 시작한 사이트이기 때문에 영리적인 행동은 취하지 않기로 했습니다.<br/> 따라서 저희는  앞으로도 꾸준히 사이트를 업데이트하고 유지 할 수 있도록 후원금을 받고자 합니다.<br/> 후원금은 앞서 말한 사이트 유지비용에 사용되며 만약 필요 이상의 후원금이 모금된다면 유지비용을 제한 나머지 금액은 모두 기부를 한 후 사이트 혹은 안티코로나  sns 계정에 업로드 하여 인증하도록 하겠습니다.</p>
+
+                        </div>
+                    </section><!-- #services -->
+                    `;
+                return contents;
+        },
+
 	blog:function(){
 		var contents = `
 		 <!--==========================
@@ -24,10 +50,26 @@ var template = {
 		      Services Section
 		    ============================-->
 		    <section id="services" class="section-bg status">
-		      </br></br>
+		      <br/><br/><br/>
+			<div class="container"> 
+				<div class="row my-3"> 
+					<div class="col"> 
+						<h4>날짜별 확진자 추이</h4> 
+					</div> 
+				</div>
+			 <div class="row my-2"> 
+				<div class="col"> 
+					<div class="card"> 
+						<div class="col-md-12 col-lg-12"> <canvas id="myChart"></canvas> 
+						</div> 
+					</div> 
+				</div> 
+			</div> 
+		       </div>
+
 		      <div id= "status" class="container pt-5">
 		        <header class="section-header">
-		          <h4>국가지정 입원치료병상 지역별 확진자</h2>
+		          <h4>지역별 확진자</h2>
 		        </header>
 		        <div class="row">
 		           <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
@@ -39,6 +81,33 @@ var template = {
 		         </div><!--row-->
 			</div>
 		    </section><!-- #services -->
+			<script>
+				 var ctx = document.getElementById('myChart').getContext('2d'); 
+				var chart = new Chart(ctx, { // 챠트 종류를 선택 
+					type: 'line', // 챠트를 그릴 데이타 
+					data: { 
+						labels: ['12월', '1월', '2월', 'April', 'May', 'June', 'July'], 
+						datasets: [{ 
+							label: '확진자', 
+							backgroundColor: 'transparent', 
+							borderColor: 'red', 
+							data: [0, 10, 5, 2, 20, 30, 45] 
+							}] 
+						}, 
+			// 옵션 
+				options: {
+					reponsive:false,
+					legend:{
+						display:false
+					},
+					title:{
+					display:true,
+					text:'확진자 추이'
+					}	
+				} 
+				}); 
+			</script>
+
 		    `;
 		return contents;
 	},
@@ -84,9 +153,24 @@ var template = {
 		          <header class="section-header">
 		          <h4>실시간 영상</h2>
 		        </header>
-		        <iframe  width="530" height="315" src="https://www.youtube.com/embed/1SlbLpjklig" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		        <iframe  width="530" height="315" src="https://www.youtube.com/embed/2Mh4Ur-6JNU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<div class="row">
+				<div class="col-sm-12 col-lg-6 embed-responsive embed-responsive-16by9">
+		        		<iframe class="embed-responsive-item pt-2 pl-1 pr-1" src="https://www.youtube.com/embed/1SlbLpjklig" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+				<div class="col-sm-12 col-lg-6 embed-responsive embed-responsive-16by9">
+		        		<iframe class = "embed-responsive-item pt-2 pl-1 pr-1" src="https://www.youtube.com/embed/cp5mLb5ZtD0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
 		      </div>
+			<header class="section-header pt-5">
+                          <h4>신종코로나바이러스 연관 검색 단어</h2>
+                        </header>
+
+			<div class="row">
+				<div class="col-lg-12">
+    				<p><img src="./cloud.png" style="max-width:100%; height:auto;" alt="신종코로나바이러스 워드클라우드" ></p>
+				</div>
+			</div>
+
 		    </section><!-- #services -->
 		`;
 		return contents;
@@ -121,7 +205,8 @@ var template = {
 
 		  <!-- Main Stylesheet File -->
 		  <link href="./css/style.css" rel="stylesheet">
-
+		
+			<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 		  
 		</head>
 
@@ -153,6 +238,7 @@ var template = {
 		          <li class="active"><a href="/">실시간 현황</a></li>
 		          <li><a href="/issue">실시간 이슈</a></li>
 		          <li><a href="/blog">블로그</a></li>
+			<li><a href="/contact">문의 및 후원</a></li>
 		        
 		        </ul>
 		      </nav><!-- .main-nav -->
@@ -160,7 +246,6 @@ var template = {
 		    </div>
 		  </header><!-- #header -->
 
-		 
 		  <main id="main" >
 			${body}
 		  </main>
@@ -202,6 +287,7 @@ var template = {
 		  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 		  <script src="lib/isotope/isotope.pkgd.min.js"></script>
 		  <script src="lib/lightbox/js/lightbox.min.js"></script>
+		  
 		  <!-- Contact Form JavaScript File -->
 		  <script src="contactform/contactform.js"></script>
 
@@ -234,7 +320,10 @@ var template = {
 			title = "블로그";
 			contents = this.whole(title,tmp);
 		}
-		else if(type === "login"){
+		else if(type === "contact"){
+			tmp = this.contact();
+			title = "문의 및 후원하기";
+			contents = this.whole(title,tmp);
 
 		}
 		else if(type === "join"){

@@ -8,11 +8,13 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+	
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
 body {
   background: #fff;
   color: #444;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Hanna", sans-serif;
 }
 
 a {
@@ -39,7 +41,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Hanna", sans-serif;
   font-weight: 400;
   margin: 0 0 20px 0;
   padding: 0;
@@ -165,6 +167,7 @@ h6 {
   right: 0;
   transition: all 0.5s;
   z-index: 997;
+	background-color:#fff;
 }
 
 #header.header-scrolled,

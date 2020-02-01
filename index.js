@@ -22,6 +22,12 @@ app.get('/blog', function(request,response){
     response.send(contents);
 });
 
+app.get('/contact', function(request,response){
+    contents = template.html("contact");
+    response.send(contents);
+});
+
+
 app.use(function(request, response, next){
   response.status(404).send("Sorry cant find that!");
 });
