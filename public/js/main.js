@@ -1,6 +1,33 @@
 (function ($) {
   "use strict";
+	
+	var path = $(location).attr('pathname')
+	if(path=="/"){
+		$('#home_page').addClass('active');
+	}
+	 if(path=="/issue"){
+                $('#issue_page').addClass('active');
+	}
+	if(path=="/blog"){
+                $('#blog_page').addClass('active');
+        }
+	if(path=="/contact"){
+                $('#contact_page').addClass('active');
+        }
 
+
+	
+
+	$('#mytype li > a').on('click', function() {
+    	var select = $(this).attr('value');
+	$('#mystatus').text($(this).text())
+	$('.total_cfm').hide();
+	$('.list_'+select).show();
+	if(select=="total")
+		$('.total_cfm').show();
+	});
+
+	
   // Preloader (if the #preloader div exists)
   $(window).on('load', function () {
     if ($('#preloader').length) {

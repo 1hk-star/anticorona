@@ -1,4 +1,3 @@
-var fs = require('fs');
 var template = {
 	 contact:function(){
                 var contents = `
@@ -9,14 +8,14 @@ var template = {
                       </br></br>
                       <div id= "status" class="container pt-5">
                         <header class="section-header">
-                          <h4>문의하기</h2>
+                          <h4 class="ro2">문의하기</h2>
                         </header>
                         <p>사이트를 이용하면서 생긴 버그, 개선점 등을 알려주시면 저희가 검토 후 빠르게 반영하도록 노력하겠습니다.<br/> 그외 어떠한  피드백이라도 좋습니다. 피드백을 남겨주신다면  저희가 확인 후 답장해 드리도록 하겠습니다.</p>
 
                         </div>
 			<div id= "status" class="container pt-5">
                         <header class="section-header">
-                          <h4>후원하기</h2>
+                          <h4 class="ro2">후원하기</h2>
                         </header>
                         <p>저희는 대학생으로 이루어진 팀으로써 이번 신종코로나바이러스에대해 조금이라도 다른분들께 도움이 되고자 사이트를 제작하고 있습니다.<br/>  서버, 도메인 등의 유지비용을 모두 사비로 충당하고 있으며 좋은뜻으로 시작한 사이트이기 때문에 영리적인 행동은 취하지 않기로 했습니다.<br/> 따라서 저희는  앞으로도 꾸준히 사이트를 업데이트하고 유지 할 수 있도록 후원금을 받고자 합니다.<br/> 후원금은 앞서 말한 사이트 유지비용에 사용되며 만약 필요 이상의 후원금이 모금된다면 유지비용을 제한 나머지 금액은 모두 기부를 한 후 사이트 혹은 안티코로나  sns 계정에 업로드 하여 인증하도록 하겠습니다.</p>
 
@@ -31,11 +30,11 @@ var template = {
 		 <!--==========================
 		      Services Section
 		    ============================-->
-		    <section id="services" class="section-bg status">
+		    <section id="services" class="section-bg">
 		      </br></br>
-		      <div id= "status" class="container pt-5">
+		      <div id= "blog" class="container pt-5">
 		        <header class="section-header">
-		          <h4>블로그</h2>
+		          <h4 class="ro2">블로그</h2>
 		        </header>
 		        <p>준비중 입니다.</p>
 		        
@@ -44,17 +43,23 @@ var template = {
 		    `;
 		return contents;
 	},
-	status:function(){
+	status:function(a1,a2,region,list,tab_list){
+
 		var contents = `
 		 <!--==========================
 		      Services Section
 		    ============================-->
-		    <section id="services" class="section-bg status">
+		    <section id="services" class="section-bg ">
 		      <br/><br/><br/>
 			<div class="container"> 
-				<div class="row my-3"> 
+				<div class="row">
+					<div class="col-md-12 col-lg-6 pt-2 ro2" style="font-size:20px">오늘 확진자 수 ${a1}</div>
+					<div class="col-md-12 col-lg-6 pt-2 ro2" style="font-size:20px">총 확진자 수 ${a2}</div>
+
+				</div>
+				<div class="row my-3 pt-5"> 
 					<div class="col"> 
-						<h4>날짜별 확진자 추이</h4> 
+						<h4 class="ro2">날짜별 확진자 추이</h4> 
 					</div> 
 				</div>
 			 <div class="row my-2"> 
@@ -67,18 +72,38 @@ var template = {
 			</div> 
 		       </div>
 
+			  <div id= "status" class="container pt-5">
+                        <header class="section-header">
+                          <h4 class="ro2">확진자별 세부사항</h2>
+				<div class="dropdown">
+    					<button class="btn btn-default dropdown-toggle" id="mystatus" value="title" type="button" data-toggle="dropdown" aria-expanded="true">
+   						 선택
+   					 <span class="caret"></span>
+   					 </button>
+   					
+					 <ul id="mytype" class="dropdown-menu" role="menu" aria-labelledby="searchType">
+					<li role="presentation" class="">
+        				<a class="ml-2 " role="menuitem" tabindex="-1" style="font-size:20px;" value="total">전체보기</a>
+                                         </li>
+					${tab_list}
+    				</ul>
+				</div>
+                        </header>
+                        <div class="row mt-2">
+				
+                                ${list}
+                         </div><!--row-->
+
+                        </div>
+
 		      <div id= "status" class="container pt-5">
-		        <header class="section-header">
-		          <h4>지역별 확진자</h2>
+		        <header class="section-header ro2">
+		          <h4 class="ro2">지역별 확진자</h2>
 		        </header>
 		        <div class="row">
-		           <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
-		            <div class="box">
-		              <h4 class="title">서울</h4>
-		              <p class="title">중앙대학교병원 : 0명</br>한일병원 : 1명</br></br>총 확진자 : 3명</p>
-		            </div>
-		          </div>
+				${region}
 		         </div><!--row-->
+
 			</div>
 		    </section><!-- #services -->
 			<script>
@@ -86,12 +111,12 @@ var template = {
 				var chart = new Chart(ctx, { // 챠트 종류를 선택 
 					type: 'line', // 챠트를 그릴 데이타 
 					data: { 
-						labels: ['12월', '1월', '2월', 'April', 'May', 'June', 'July'], 
+						labels: ['01/20', '01/24', '01/26', '01/27', '01/30', '01/31', '02/01','02/02'], 
 						datasets: [{ 
 							label: '확진자', 
 							backgroundColor: 'transparent', 
 							borderColor: 'red', 
-							data: [0, 10, 5, 2, 20, 30, 45] 
+							data: [1, 2, 3, 4, 7, 11, 12,15] 
 							}] 
 						}, 
 			// 옵션 
@@ -111,58 +136,41 @@ var template = {
 		    `;
 		return contents;
 	},
-	issue:function(){
+	issue:function(body){
 		var contents = `
-			 <section id="services" class="section-bg status">
+			 <section id="services" class="section-bg">
 		      </br></br>
 		      <div id= "issue" class="container pt-5">
-		        <header class="section-header">
-		          <h4>실시간 뉴스</h2>
+		        <header class="section-header ro2">
+		          <h4 class="ro2">실시간 뉴스</h2>
 		        </header>
 		        <div class="row">
-		          <div class="col-md-12 col-lg-12 wow bounceInUp" data-wow-duration="1.4s">
+		          <div class="col-md-12 col-lg-12 ">
 		            <div class="box">
 		               <table class="table table-hover">
 		                  <tbody>
-		                    <tr>
-		                      <td>코로나 바이러스 치료제 발견</td>
-		                      <td>대한뉴스</td>
-		                      <td>2020/01/29 07:01</td>
-		                    </tr>
+					${body}
 		                  </tbody>
 		                </table>
 		                <hr/>
-		                <nav aria-label="Page navigation example">
-		  			<ul class="pagination justify-content-center">
-		    				<li class="page-item disabled">
-		      					<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-		    				</li>
-		    				<li class="page-item"><a class="page-link" href="#">1</a></li>
-		    				<li class="page-item"><a class="page-link" href="#">2</a></li>
-		    				<li class="page-item"><a class="page-link" href="#">3</a></li>
-		    				<li class="page-item">
-		      					<a class="page-link" href="#">Next</a>
-		    				</li>
-		  			</ul>
-				</nav>
 		            </div>
 		          </div> <!--list end-->
 		        
 
 		        </div>
-		          <header class="section-header">
-		          <h4>실시간 영상</h2>
+		          <header class="ro2 section-header">
+		          <h4 class="ro2">연관 영상</h2>
 		        </header>
 			<div class="row">
 				<div class="col-sm-12 col-lg-6 embed-responsive embed-responsive-16by9">
-		        		<iframe class="embed-responsive-item pt-2 pl-1 pr-1" src="https://www.youtube.com/embed/1SlbLpjklig" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		        		<iframe class="embed-responsive-item pt-2 pl-1 pr-1" src="https://www.youtube.com/embed/dEr4yFayenc" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 				<div class="col-sm-12 col-lg-6 embed-responsive embed-responsive-16by9">
 		        		<iframe class = "embed-responsive-item pt-2 pl-1 pr-1" src="https://www.youtube.com/embed/cp5mLb5ZtD0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 		      </div>
-			<header class="section-header pt-5">
-                          <h4>신종코로나바이러스 연관 검색 단어</h2>
+			<header class="section-header pt-5 ro2">
+                          <h4 class="ro2">신종코로나바이러스 연관 검색 단어</h2>
                         </header>
 
 			<div class="row">
@@ -184,8 +192,12 @@ var template = {
 		  <title>안티코로나- ${title}</title>
 		  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 		  <meta content="코로나바이러스, 우한폐렴, 바이러스, 독감, 신종코로나, 마스크" name="keywords">
-		  <meta content="신종코로나바이러스, 우한폐렴에 대한 실시간 이슈, 뉴스, 확진자에 대한 정보를 제공하는 사이트입니다. 또한 국내 한국의 지역별 지정병원에 대해서도 표시하고 있습니다." name="description">
+		  <meta content="신종코로나바이러스, 우한폐렴에 대한 실시간 이슈, 뉴스, 확진자에 대한 정보를 제공하는 사이트입니다." name="description">
 
+		<meta property="og:title" content="안티코로나 - 신종 코로나바이러스 국내 현황, 이슈 정리">
+		<meta property="og:description" content="국내 신종 코로나바이러스에 대한 이슈와 확진자에 대한 정보를 제공합니다.">
+		<meta property="og:image" contents="./img/123.png">
+			
 		  <!-- Favicons -->
 		  <link href="img/favicon.png" rel="icon">
 		  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -207,7 +219,16 @@ var template = {
 		  <link href="./css/style.css" rel="stylesheet">
 		
 			<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-		  
+		
+		  <!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157535798-1"></script>
+		<script>
+ 		 window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+ 		 gtag('js', new Date());
+
+ 		 gtag('config', 'UA-157535798-1');
+</script>
 		</head>
 
 		<body>
@@ -229,16 +250,16 @@ var template = {
 
 		      <div class="logo float-left">
 		        <!-- Uncomment below if you prefer to use an image logo -->
-		        <h1 class="text-light"><a href="/" class="scrollto"><span>안티코로나</span></a></h1>
+		        <h1 class="text-light ro2"><a href="/" class="scrollto"><span>안티코로나</span></a></h1>
 		        <!-- <a href="#header" class="scrollto"><img src="./img/logo.png" alt="" class="img-fluid"></a> -->
 		      </div>
 
-		      <nav class="main-nav float-right d-none d-lg-block">
+		      <nav class="main-nav float-right d-none d-lg-block ro2">
 		        <ul>
-		          <li class="active"><a href="/">실시간 현황</a></li>
-		          <li><a href="/issue">실시간 이슈</a></li>
-		          <li><a href="/blog">블로그</a></li>
-			<li><a href="/contact">문의 및 후원</a></li>
+		          <li id="home_page" class=""><a href="/">실시간 현황</a></li>
+		          <li id="issue_page" class=""><a href="/issue">실시간 이슈</a></li>
+		          <li id="blog_page" class=""><a href="/blog">블로그</a></li>
+			<li id="contact_page" class=""><a href="/contact">문의 및 후원</a></li>
 		        
 		        </ul>
 		      </nav><!-- .main-nav -->
@@ -306,12 +327,12 @@ var template = {
 		var contents = '';
 
 		if(type === "status"){
-			tmp = this.status();
-			title = "실시간 현황";
-			contents = this.whole(title,tmp);
+			tmp = this.status(today_confirmator,total_confirmator,region_list);
+                        title = "실시간 현황";
+                        contents = this.whole(title,tmp);
 		}
 		else if(type === "issue"){
-			tmp = this.issue();
+			tmp = this.issue(body);
 			title = "실시간 이슈";
 			contents = this.whole(title,tmp);
 		}

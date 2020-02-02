@@ -10,11 +10,18 @@
 --------------------------------------------------------------*/
 	
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 body {
   background: #fff;
   color: #444;
-  font-family: "Hanna", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.row{
+	font-family:"Noto Sans KR";
+}
+.ro2{
+	font-family:"Hanna";
 }
 
 a {
@@ -41,7 +48,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Hanna", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 400;
   margin: 0 0 20px 0;
   padding: 0;
@@ -1567,6 +1574,12 @@ h6 {
   #testimonials .testimonial-item p {
     margin-left: 0;
   }
+}
+.con{   
+        font-size:15px;
+	font-weight: 700;
+    	margin-bottom: 15px;
+    	line-height: 30px;
 }
 
 @media (max-width: 574px) {

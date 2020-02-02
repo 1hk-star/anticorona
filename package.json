@@ -1,0 +1,26 @@
+{
+  "name": "lhk",
+  "version": "1.0.0",
+  "description": "hello",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "mysql": "^2.18.1",
+    "promise": "^8.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "hello"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1hk-star/anticorona.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1hk-star/anticorona/issues"
+  },
+  "homepage": "https://github.com/1hk-star/anticorona#readme"
+}
